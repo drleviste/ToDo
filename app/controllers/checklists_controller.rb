@@ -8,7 +8,7 @@ class ChecklistsController < ApplicationController
   end
 
   def create
-    @checklist = Checklist.new(checklist_params)
+    @checklist = Checklist.create(checklist_params)
     redirect_to checklists_path @checklist
   end
 
