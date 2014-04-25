@@ -20,7 +20,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.find(params[:id])
 
     if @checklist.update(checklist_params)
-      redirect_to @article
+      redirect_to @checklist
     else
       render 'edit'
     end
