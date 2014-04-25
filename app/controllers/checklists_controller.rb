@@ -9,6 +9,7 @@ class ChecklistsController < ApplicationController
 
   def create
     @checklist = Checklist.new(checklist_params)
+    redirect_to checklists_path @checklist
   end
 
   def edit
@@ -22,10 +23,12 @@ class ChecklistsController < ApplicationController
       redirect_to @article
     else
       render 'edit'
+    end
   end
 
   def destroy
     @checklist = Checklist.find(params[:id])
+    @checklist.destroy
     redirect_to checklists_path #save checklist folder in view
 
   end

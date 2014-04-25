@@ -1,2 +1,19 @@
 <% content_for :title, "New" %>
 <h1> New Checklist </h1>
+
+<%= form_for @checklist do |checklist| %>
+	<p> 
+		<strong> <%= checklist.label  :title%> </strong> <br>
+		<%= checklist.text_field :title%>
+	</p>
+
+	<p>
+		<strong> <%= checklist.label :description %> </strong> <br>
+		<%= checklist.text_area :description %>
+	</p>
+
+	<p>
+		<%=checklist.submit %>
+	</p>
+
+<% end %>
