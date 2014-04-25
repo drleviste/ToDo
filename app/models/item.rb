@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-  belongs_to :checklists, dependent: :destroy
+  belongs_to :checklists
 end
