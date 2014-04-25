@@ -1,26 +1,34 @@
 <% content_for :title, @checklist.title %>
 <h1> <%= @checklist.title %> </h1>
 <h3> <%= @checklist.description %> </h3>
-<%= link_to 'Edit', edit_checklist_path(@checklist) %>
+<%= link_to 'Edit', edit_checklist_path(@checklist) %> | 
+<%= link_to 'Back', checklists_path %>
 
-<h2> Items </h2>
-<% if @checklist.items.size > 0 %>
+<h2> Prerequisites </h2>
+<% if @prereqs.size > 0 %>
   <ul>
-  <% @checklist.items.each do |item| %>
-    <li> <%= item.content %>
-    <%= link_to 'Edit', edit_checklist_item_path(@checklist, item) %> | 
-    <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
+    <% @prereqs.each do |item| %>
+      <li> <%= item.content %> <%= link_to "Edit" %> </li>
+  </ul>
+<% end %>
+  
+<% else %>
+  <p> There are no prerequisites. </p>
+<% end %>
+
+<h2> ToDo's </h2>
+<% if @todos.size > 0 %>
+  <ul>
+  <% @todos.each do |item| %>
+    <li> <%= item.content %> <%= link_to "Edit" %> </li>
   <% end %>
   </ul>
 <% else %>
-  <p> There are no items. </p>
+  <p> There are no prerequisites. </p>
 <% end %>
 
 
 <%= render "items/form" %>
-
-<%= link_to 'Checklists', checklists_path %>
 
 <!--
 <h2> Prerequisites: </h2>

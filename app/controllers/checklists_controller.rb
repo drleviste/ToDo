@@ -34,6 +34,8 @@ class ChecklistsController < ApplicationController
 
   def show
     @checklist = Checklist.find(params[:id])
+    @prereqs = @checklist.items.where("category = ?", 'prereq')
+    @todos = @checklist.items.where("category = ?", 'todo')
   end
 
   private
