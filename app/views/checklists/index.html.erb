@@ -3,7 +3,7 @@
 
 <%= link_to "New Checklist", new_checklist_path %>
 
-<% if @checklists %>
+<% if @checklists.size > 0 %>
   <% @checklists.each do |checklist| %>
     <h3> <%= link_to checklist.title, checklist_path(checklist) %> </h3>
   <% end %>

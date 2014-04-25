@@ -30,11 +30,13 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.find(params[:id])
     @checklist.destroy
     redirect_to checklists_path #save checklist folder in view
+  end
 
+  def show
+    @checklist = Checklist.find(params[:id])
   end
 
   private
-
     def checklist_params
       params.require(:checklist).permit(:title, :description)
     end

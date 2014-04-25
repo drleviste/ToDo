@@ -1,11 +1,18 @@
 class ItemsController < ApplicationController
-  def index
-  end
 
   def new
+    @items = Item.new 
   end
 
   def create
+    @id = Item.find(params[:id])
+    @item = Item.create(items_params)
+    unless @item.valid?
+      flash[:error] = @item.errors.full_messages.join("<br>").html_safe
+    else
+      flash[:success] = "#{params[:category]} added successfully"
+    end
+    redirect_to checklist_path(@id)
   end
 
   def edit
@@ -19,11 +26,6 @@ class ItemsController < ApplicationController
 
   private
     def items_params
-    end
-
-    def create_prereq
-    end
-
-    def create_todo
+      params.require(:item).permit(:content, :category, :order)
     end
 end
