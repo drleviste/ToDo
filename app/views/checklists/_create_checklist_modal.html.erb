@@ -1,4 +1,4 @@
-<%= form_for checklist do |checklist| %>
+<%= form_for checklist, html: {role: "form"} do |checklist| %>
 <div class="modal fade" id="createChecklist" tabindex="-1" role="dialog" aria-labelledby="createChecklistLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -7,14 +7,21 @@
         <h4 class="modal-title" id="createChecklistLabel">Create Checklist</h4>
       </div>
       <div class="modal-body">
-          <p>     
-            <%= checklist.text_field :title%>
-            <strong> <%= checklist.label  :title%> </strong> 
-          </p>
-
           <p>
-            <%= checklist.text_area :description %>
-            <strong> <%= checklist.label :description %> </strong> 
+            <div class="form-group">
+            
+            <strong> <%= checklist.label  :title%> </strong>      
+            <%= checklist.text_field :title, class: 'form-control', placeholder: 'Enter Title'%>
+          </div>
+          </p>
+        
+          <p>
+            <div class="form-group">
+            <strong> <%= checklist.label :description%> </strong> 
+              <%= checklist.text_area :description, class: 'form-control', placeholder: 'Enter description'  %> 
+               
+            </div>
+            
           </p>
       </div>
       <div class="modal-footer">
@@ -25,3 +32,13 @@
   </div>
 </div>
 <% end %>
+
+
+  
+    
+    
+
+  
+  
+  
+
