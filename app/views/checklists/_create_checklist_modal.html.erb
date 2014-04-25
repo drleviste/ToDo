@@ -1,0 +1,27 @@
+<%= form_for checklist do |checklist| %>
+<div class="modal fade" id="createChecklist" tabindex="-1" role="dialog" aria-labelledby="createChecklistLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="createChecklistLabel">Create Checklist</h4>
+      </div>
+      <div class="modal-body">
+          <p>     
+            <%= checklist.text_field :title%>
+            <strong> <%= checklist.label  :title%> </strong> 
+          </p>
+
+          <p>
+            <%= checklist.text_area :description %>
+            <strong> <%= checklist.label :description %> </strong> 
+          </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= checklist.button :Save, class: 'btn btn-primary'  %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

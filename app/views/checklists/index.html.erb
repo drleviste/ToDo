@@ -1,7 +1,12 @@
 <% content_for :title, "Home" %>
 <h1> Checklists </h1>
 
-<%= link_to "New Checklist", new_checklist_path %>
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#createChecklist">
+  Create Checklist
+</button>
+
+<%= render 'create_checklist_modal', checklist: @checklist %>
+
 <hr>
 <% if @checklists.size > 0 %>
   <table>
