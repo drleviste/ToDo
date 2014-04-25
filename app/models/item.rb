@@ -1,4 +1,4 @@
 class Item < ActiveRecord::Base
-  belongs_to :checklists
+  belongs_to :checklist
   validates :content, presence: true
 end

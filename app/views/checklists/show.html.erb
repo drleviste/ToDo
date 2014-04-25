@@ -2,17 +2,4 @@
 <h1> <%= @checklist.title %> </h1>
 <h3> <%= @checklist.description %> </h3>
 
-<h2> Items </h2>
-<% if @checklist.items.size > 0 %>
-  <ul>
-  <% @checklist.items.each do |item| %>
-    <li> item.content </li>
-  <% end %>
-  </ul>
-<% else %>
-  <p> There are no items. </p>
-<% end %>
-
-<h2> Prerequisites: </h2>
-
-<h2> ToDo's: <h2>ss
+<% render @checklist.items %>
