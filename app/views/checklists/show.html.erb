@@ -8,7 +8,9 @@
 <% if @prereqs.size > 0 %>
   <ul>
   <% @prereqs.each do |item| %>
-    <li> <%= item.content %> <%= link_to "Edit" %> </li>
+    <li> <%= item.content %> <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
+    <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
   </ul>
 <% else %>
@@ -19,7 +21,9 @@
 <% if @todos.size > 0 %>
   <ul>
   <% @todos.each do |item| %>
-    <li> <%= item.content %> <%= link_to "Edit" %> </li>
+    <li> <%= item.content %> <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
+    <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
   </ul>
 <% else %>
