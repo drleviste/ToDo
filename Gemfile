@@ -30,6 +30,8 @@ gem 'rspec-rails', '~> 2.14.2', group: [:development,:test]
 
 gem 'pry', '~> 0.9.12.6', group: :test
 
+gem 'bootstrap-sass', '~> 3.1.1.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
