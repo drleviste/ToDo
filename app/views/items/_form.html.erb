@@ -1,0 +1,11 @@
+<%= form_for([@checklist, @checklist.items.build]) do |f|%>
+  <%= f.text_field :content %>
+  <%= f.hidden_field(:category, :value => "prereq") %>
+  <%= f.submit("Add Pre-req") %>
+<% end %>
+
+<%= form_for([@checklist, @checklist.items.build]) do |f|%>
+  <%= f.text_field :content %>
+  <%= f.hidden_field(:category, :value => "todo") %>
+  <%= f.submit("Add Todo") %>
+<% end %>

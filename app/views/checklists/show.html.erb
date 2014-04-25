@@ -6,13 +6,14 @@
 <% if @checklist.items.size > 0 %>
   <ul>
   <% @checklist.items.each do |item| %>
-    <li> item.content </li>
+    <li> <%= item.content %> </li>
   <% end %>
   </ul>
 <% else %>
   <p> There are no items. </p>
 <% end %>
 
+<%= render "items/form" %>
 <!--
 <h2> Prerequisites: </h2>
 <h2> ToDo's: <h2>-->

@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @id = Item.find(params[:id])
-    @item = Item.create(items_params)
+    @id = Checklist.find(params[:checklist_id])
+    @item = @id.items.create(items_params)
     unless @item.valid?
       flash[:error] = @item.errors.full_messages.join("<br>").html_safe
     else
