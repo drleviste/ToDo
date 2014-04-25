@@ -1,0 +1,18 @@
+<%= form_for @checklist do |checklist| %>
+	<p> 
+		
+		<%= checklist.text_field :title%>
+		<strong> <%= checklist.label  :title%> </strong> 
+	</p>
+
+	<p>
+		
+		<%= checklist.text_area :description %>
+		<strong> <%= checklist.label :description %> </strong> 
+	</p>
+
+	<p>
+		<%=checklist.submit %>
+	</p>
+
+<% end %>
