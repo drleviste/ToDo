@@ -2,11 +2,25 @@
 <h1> Checklists </h1>
 
 <%= link_to "New Checklist", new_checklist_path %>
-
+<hr>
 <% if @checklists.size > 0 %>
+  <table>
+    <tr>
+      <th> Title </th>
+      <th> Actions </th>
+    </tr>
   <% @checklists.each do |checklist| %>
-    <h3> <%= link_to checklist.title, checklist_path(checklist) %> </h3>
+    <tr>
+      <td> <%= link_to checklist.title, checklist_path(checklist) %> </td>
+      <td>
+          <p>  
+            <%= link_to 'Edit', edit_checklist_path(checklist) %> | 
+            <%= link_to 'Delete', checklist_path(checklist), method: :delete, data: { confirm: 'Are you sure?' } %> 
+          </p>
+      </td>
+    </tr>
   <% end %>
+  </table>
 <% else %>
   <h3> There are no checklists. </h3>
 <% end %>
