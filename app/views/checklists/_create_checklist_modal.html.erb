@@ -4,20 +4,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="createChecklistLabel">Create Checklist</h4>
+        <h4 class="modal-title" id="createChecklistLabel">Add Checklist</h4>
       </div>
       <div class="modal-body">
           <p>
-            <div class="form-group">
-            
-            <strong> <%= checklist.label  :title%> </strong>      
+            <div class="form-group">      
             <%= checklist.text_field :title, class: 'form-control', placeholder: 'Enter Title'%>
-          </div>
+            </div>
           </p>
         
           <p>
-            <div class="form-group">
-            <strong> <%= checklist.label :description%> </strong> 
+            <div class="form-group"> 
               <%= checklist.text_area :description, class: 'form-control', placeholder: 'Enter description'  %> 
                
             </div>

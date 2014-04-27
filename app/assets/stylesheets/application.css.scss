@@ -1,1 +1,78 @@
 @import "bootstrap";
+
+body {
+	background-color: #f3f3f3;
+}
+
+#navhead {
+	padding-left:45px
+}
+
+.navbar {
+	font-family: Helvetica;
+	background-color:#2f4154;
+}
+
+.navbar-brand {
+	color: #ffffff !important;
+}
+
+.navbar-brand:hover {
+	color: #16a085 !important;
+}
+
+#searchbar {
+	padding-right: 45px;
+}
+
+#add_new {
+	font-size: 16px;
+	color: #16a085;
+	padding-left: 0px !important;
+}
+
+.glyphicon {
+	color: #2f4154;
+}
+
+#title {
+	margin-right: 30px;
+	margin-bottom: 0px;
+}
+
+.icons{
+	visibility: hidden;
+}
+
+.rectangle_list:hover {
+	background: #ED9820;
+
+}
+
+.rectangle_list {
+	width: 300px;
+	height: 100px;
+	background-color: #FFA422;
+	margin-bottom: 30px;
+	border-radius: 5px;
+
+}
+
+.main-content {
+	padding: 15px;
+}
+
+.content {
+	font-family: Arial;
+	color: #000000;
+	font-size: 20px;
+}
+
+.modal-header {
+	background:#2f4154;
+}
+
+.modal-title{
+	color: #ffffff;
+}
+
