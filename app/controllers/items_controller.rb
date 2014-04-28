@@ -36,6 +36,19 @@ class ItemsController < ApplicationController
     redirect_to @checklist
   end
 
+  def complete   
+    @checklist = Checklist.find(params[:checklist_id])
+    if params[:items_checkbox].present?
+      Item.where(id: params[:items_checkbox]).update_all(is_complete: true)
+      Item.where('id not in (?)', params[:items_checkbox]).update_all(is_complete: false)
+    else
+      Item.update_all(is_complete: false)
+    end
+    
+    redirect_to @checklist
+
+    end
+
   private
     def items_params
       params.require(:item).permit(:content, :category, :order)

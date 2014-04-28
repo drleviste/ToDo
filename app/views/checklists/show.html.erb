@@ -20,16 +20,33 @@
 
 <h2> ToDo's </h2>
 <% if @todos.size > 0 %>
-  <ul>
-  <% @todos.each do |item| %>
-    <li> <%= item.content %> <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
-    <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
+  <%= form_for(@checklist, :url => complete_checklist_items_path(@checklist), :method => "post") do %>
+    <ul style="list-style-type:none;">
+    <% @todos.each do |item| %>
+        
+        <% if item.is_complete %>
+          <li style="color:grey;"> <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
+          <strike> <%= item.content %> </strike> 
+          
+          <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
+          <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+        <% else %>
+          <li>  <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
+          <%= item.content %>
+          <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
+          <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+        <% end %>
+    <% end %>
+    <%= submit_tag("Submit", :class=>"btn btn-success") %> 
+
+    </ul>
   <% end %>
-  </ul>
 <% else %>
-  <p> There are no prerequisites. </p>
+  <p> There are no todos. </p>
 <% end %>
+
 
 
 <%= render "items/form" %>

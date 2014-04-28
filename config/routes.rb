@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :checklists do
-    resources :items
+    resources :items do
+      collection do
+        post 'complete'
+      end
+    end
   end
+
+  # post "items/complete" => 'items#complete'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
