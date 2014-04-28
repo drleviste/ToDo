@@ -24,13 +24,10 @@
 </nav>
 <div class="container">
   <h1 id="title"> My Checklist </h1>
-  <%= link_to new_checklist_path, :id => 'add_new', :class => 'btn btn-link', :"data-target" => "#createChecklist" do%>
+  <%= link_to new_checklist_path, :id => 'add_new', :class => 'btn btn-link' do%>
     <span class="glyphicon glyphicon-plus"></span>  
     Add Checklist
   <% end %>
-  <div class="modal fade" id="createChecklist" tabindex="-1" role="dialog" aria-labelledby="createChecklistLabel" aria-hidden="true">
-    <div class="modal-dialog"><div class="modal-content"></div></div>
-  </div>
   <hr>
   <% if @checklists.size > 0 %>
     <table>
@@ -45,22 +42,18 @@
           <div class="rectangle_list">
             <div class="rectangle-container" style="width:300px; height:100px">
               <div class="main-content">
-                <div class="col-lg-12" style="padding:0px; wid">
-                  <div class="pull-right">
-                    <span class="icons glyphicon glyphicon-pencil"></span>
+                <div class="col-lg-12" style="padding:0px">
+                  <div class="pull-right" style="padding-top:3px">
+                    <%= link_to edit_checklist_path(checklist), :class => 'icons-link' do%>
+                       <span class="icons glyphicon glyphicon-pencil"></span>
+                    <% end %>
+                    <%= link_to checklist_path(checklist), method: :delete, data: {confirm: 'Are you sure' }, :class => 'icons-link' do%>
+                       <span class="icons glyphicon glyphicon-remove"></span>
+                    <% end %>
                   </div>
-                  <%= link_to checklist_path(checklist), :class => 'content' do%>
-                  <%= checklist.title %>
+                  <%= link_to checklist.title, checklist_path(checklist), :class => 'content'%>               
                 </div>
-                
-                <% end %>
               </div>
-              <!-- <td>
-                  <p>  
-                    <%= link_to 'Edit', edit_checklist_path(checklist) %> | 
-                    <%= link_to 'Delete', checklist_path(checklist), method: :delete, data: { confirm: 'Are you sure?' } %> 
-                  </p>
-              </td> -->
             </div>
           </div>
       </div>

@@ -42,12 +42,25 @@ body {
 
 .icons{
 	visibility: hidden;
+	opacity: 0.7;
+}
+
+.icons:hover {
+	opacity: 0.9;
+}
+
+.icons-link {
+	text-decoration: none !important;
 }
 
 .rectangle_list:hover {
 	background: #ED9820;
-
 }
+
+.rectangle_list:hover .icons{
+	visibility: visible;
+	text-decoration: none;
+}	
 
 .rectangle_list {
 	width: 300px;
@@ -59,7 +72,10 @@ body {
 }
 
 .main-content {
-	padding: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .content {

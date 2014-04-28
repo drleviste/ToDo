@@ -6,11 +6,11 @@ class ChecklistsController < ApplicationController
 
   def new
     @checklist = Checklist.new
+
   end
 
   def create
-    @checklist = Checklist.new(checklist_params)
-    
+    @checklist = Checklist.new(checklist_params)   
     if @checklist.save
       redirect_to checklist_path @checklist
     else 
