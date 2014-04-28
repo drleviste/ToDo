@@ -4,8 +4,14 @@ body {
 	background-color: #f3f3f3;
 }
 
+.row {
+	margin-left:350px;
+	margin-right:380px;
+}
+
 #navhead {
-	padding-left:45px
+	padding-left:350px;
+	padding-right:350px;
 }
 
 .navbar {
@@ -21,10 +27,6 @@ body {
 	color: #16a085 !important;
 }
 
-#searchbar {
-	padding-right: 45px;
-}
-
 #add_new {
 	font-size: 16px;
 	color: #16a085;
@@ -38,6 +40,11 @@ body {
 #title {
 	margin-right: 30px;
 	margin-bottom: 0px;
+}
+
+#save {
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .icons{
@@ -63,7 +70,7 @@ body {
 }	
 
 .rectangle_list {
-	width: 300px;
+	width: 250px;
 	height: 100px;
 	background-color: #FFA422;
 	margin-bottom: 30px;
@@ -90,5 +97,27 @@ body {
 
 .modal-title{
 	color: #ffffff;
+}
+
+.description{
+	font-size:18px;
+}
+
+.form-control {
+	width: 570px;
+	margin: 0 auto;
+}
+
+.well {
+	background: white;
+}
+
+.list-group-item:hover .icons{
+	visibility: visible;
+	text-decoration: none;
+}
+
+.edit {
+	width: 340px;
 }
 

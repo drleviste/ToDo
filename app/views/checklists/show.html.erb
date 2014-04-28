@@ -1,56 +1,118 @@
-<% content_for :title, @checklist.title %>
-<h1> <%= @checklist.title %> </h1>
-<h3> <%= @checklist.description %> </h3>
-<%= link_to 'Edit', edit_checklist_path(@checklist)%> | 
-<%= link_to 'Back', checklists_path %>
 
+  <% content_for :title, @checklist.title %>
+  <div class="col-lg-12 well" style="border:1px #ffffff">
+    
+    <h1>
+      <%= @checklist.title %>
+      <div class="pull-right" style="padding-top:3px">
+      <%= link_to edit_checklist_path(@checklist), :class => 'icons-link' do%>
+         <span class="glyphicon glyphicon-pencil"></span>
+      <% end %>
+      </div>
+    </h1>
+    <hr>
+    <p class="description"> <%= @checklist.description %> </p>
 
-<h2> Prerequisites </h2>
-<% if @prereqs.size > 0 %>
-  <ul>
-  <% @prereqs.each do |item| %>
-    <li> <%= item.content %> <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
-    <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-  </ul>
-<% else %>
-  <p> There are no prerequisites. </p>
-<% end %>
-
-<h2> ToDo's </h2>
-<% if @todos.size > 0 %>
-  <%= form_for(@checklist, :url => complete_checklist_items_path(@checklist), :method => "post") do %>
-    <ul style="list-style-type:none;">
-    <% @todos.each do |item| %>
-        
-        <% if item.is_complete %>
-          <li style="color:grey;"> <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
-          <strike> <%= item.content %> </strike> 
-          
-          <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
-          <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
-          </li>
-        <% else %>
-          <li>  <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
-          <%= item.content %>
-          <%= link_to "Edit",edit_checklist_item_path(@checklist, item) %> | 
-          <%= link_to 'Delete', checklist_item_path(@checklist, item), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  
+  <div class="col-lg-12 well" style="padding:0px; margin-top:30px">
+    <div class="col-lg-12">
+      <h2> Prerequisites </h2>
+      <%= form_for([@checklist, @checklist.items.build]) do |f|%>
+        <div class="col-lg-5 form-group" style="padding:0px">
+          <%= f.text_field :content, :class => 'form-control edit', :placeholder => 'Enter prereq' %>
+        </div>
+        <div class="col-lg-6">
+        <%= f.hidden_field(:category, :value => "prereq") %>
+        <%= f.submit("Add Prereq", :class => 'btn btn-default') %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <% if @prereqs.size > 0 %> 
+      <div class="col-lg-12"> 
+        <ul class="list-group">
+        <% @prereqs.each do |item| %>
+          <li class="list-group-item"> 
+            <%= item.content %> 
+            <%= link_to edit_checklist_item_path(@checklist, item), :class => 'icons-link' do%>
+               <span class="icons glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to checklist_item_path(@checklist, item), method: :delete, data: {confirm: 'Are you sure' }, :class => 'icons-link' do%>
+               <span class="icons glyphicon glyphicon-remove"></span>
+            <% end %>
           </li>
         <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <div class="col-lg-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            There are no prerequisites
+          </li>
+        <ul>
+      </div>
     <% end %>
-    <%= submit_tag("Submit", :class=>"btn btn-success") %> 
+      
+  </div>
+  <div class="col-lg-12 well" style="padding:0px; margin-top:30px">
+    <div class="col-lg-12">
+      <h2> ToDo's </h2>
+      <%= form_for([@checklist, @checklist.items.build]) do |f|%>
+        <div class="col-lg-5 form-group" style="padding:0px">
+          <%= f.text_field :content, :class => 'form-control edit', :placeholder => 'Enter todo' %>
+        </div>
+        <div class="col-lg-6">
+        <%= f.hidden_field(:category, :value => "todo") %>
+        <%= f.submit("Add Todo", :class => 'btn btn-default') %>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <% if @todos.size > 0 %>
+      <%= form_for(@checklist, :url => complete_checklist_items_path(@checklist), :method => "post") do %>
+      <div class="col-lg-12">
+        <ul class="list-group">
+        <% @todos.each do |item| %>
+          <% if item.is_complete %>
+            <li class="list-group-item">
+              <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
+              <strike><%= item.content %> </strike>
+              <%= link_to edit_checklist_item_path(@checklist, item), :class => 'icons-link' do%>
+               <span class="icons glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to checklist_item_path(@checklist, item), method: :delete, data: {confirm: 'Are you sure' }, :class => 'icons-link' do%>
+                 <span class="icons glyphicon glyphicon-remove"></span>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="list-group-item">
+              <%= check_box_tag  "items_checkbox[]",item.id, item.is_complete %>
+              <%= item.content %> 
+              <%= link_to edit_checklist_item_path(@checklist, item), :class => 'icons-link' do%>
+               <span class="icons glyphicon glyphicon-pencil"></span>
+              <% end %>
+              <%= link_to checklist_item_path(@checklist, item), method: :delete, data: {confirm: 'Are you sure' }, :class => 'icons-link' do%>
+                 <span class="icons glyphicon glyphicon-remove"></span>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+        </ul>
+        <div class="col-lg-12" style="padding:0px; margin-top:10px; margin-bottom:20px">
+          <%= submit_tag("Submit", :class=>"btn btn-success") %> 
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+      <div class="col-lg-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            There are no prerequisites
+          </li>
+        <ul>
+      </div>
+    <% end %>
+  </div>
 
-    </ul>
-  <% end %>
-<% else %>
-  <p> There are no todos. </p>
-<% end %>
-
-
-
-<%= render "items/form" %>
-
-<!--
-<h2> Prerequisites: </h2>
-<h2> ToDo's: <h2>-->

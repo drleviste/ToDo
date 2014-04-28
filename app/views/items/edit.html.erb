@@ -1,6 +1,13 @@
 <%= content_for :title, "Edit Item " %>
 
-<%= form_for [@checklist, @item] do |f| %>
-  <%= f.text_field :content%>
-  <%= f.submit %>
-<% end %>
+  <h1 class="text-center" id="title" style="margin-bottom:30px; margin-left:30px">Edit Item</h1>
+  <div class="col-lg-12">   
+      <%= form_for [@checklist, @item] do |f| %>
+        <div class="form-group">
+          <%= f.text_field :content, class: 'form-control', placeholder: 'Enter Text'%>
+        </div>
+        <div class="pull-right" style="margin-right:100px">  
+          <%= f.button :Save, :class => 'btn btn-primary', :id => 'save'%>
+        </div>  
+      <% end %>
+  </div>
