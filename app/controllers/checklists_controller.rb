@@ -9,17 +9,23 @@ class ChecklistsController < ApplicationController
   end
 
   def create
-    @checklist = Checklist.create(checklist_params)
-    redirect_to checklist_path @checklist
+    @checklist = Checklist.new(checklist_params)
+    
+    if @checklist.save
+      redirect_to checklist_path @checklist
+    else 
+      render 'new'
+    end
   end
+    
 
   def edit
     @checklist = Checklist.find(params[:id])
+
   end
 
   def update
     @checklist = Checklist.find(params[:id])
-
     if @checklist.update(checklist_params)
       redirect_to @checklist
     else

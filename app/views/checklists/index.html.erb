@@ -24,11 +24,13 @@
 </nav>
 <div class="container">
   <h1 id="title"> My Checklist </h1>
-  <%= link_to new_checklist_path, :id => 'add_new', :class => 'btn btn-link', :"data-toggle" => "modal", :"data-target" => "#createChecklist" do%>
+  <%= link_to new_checklist_path, :id => 'add_new', :class => 'btn btn-link', :"data-target" => "#createChecklist" do%>
     <span class="glyphicon glyphicon-plus"></span>  
     Add Checklist
   <% end %>
-  <%= render 'create_checklist_modal', checklist: @checklist %>
+  <div class="modal fade" id="createChecklist" tabindex="-1" role="dialog" aria-labelledby="createChecklistLabel" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content"></div></div>
+  </div>
   <hr>
   <% if @checklists.size > 0 %>
     <table>

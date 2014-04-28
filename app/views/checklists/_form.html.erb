@@ -1,0 +1,28 @@
+<%= form_for @checklist, html: {role: "form"} do |checklist| %>
+
+  <p>
+    <div class="form-group">      
+    <%= checklist.text_field :title, class: 'form-control', placeholder: 'Enter Title'%>
+    </div>
+  </p>
+
+  <p>
+    <div class="form-group"> 
+      <%= checklist.text_area :description, class: 'form-control', placeholder: 'Enter description'  %> 
+       
+    </div>
+    
+  
+<%= checklist.button :Save, class: 'btn btn-primary'  %>
+     
+<% end %>
+
+
+  
+    
+    
+
+  
+  
+  
+
