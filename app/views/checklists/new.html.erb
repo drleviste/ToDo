@@ -1,7 +1,7 @@
 
   <h1 class="text-center" id="title" style="margin-bottom:30px; margin-left:30px"> New Checklist </h1>
   <% if @checklist.errors.any? %>
-    <div class="col-lg-12 alert alert-danger" style="width:570px; margin-left:115px">
+    <div class="col-lg-12 alert alert-danger" style="width:570px; margin-left:310px">
       <div id="error_explanation" style="width:570px; margin:0 auto">
         <% @checklist.errors.full_messages.each do |msg| %>
           <p style="margin:0px"> <%= msg %> </p>

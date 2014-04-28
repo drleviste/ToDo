@@ -19,10 +19,10 @@
     <div class="col-lg-12">
       <h2> Prerequisites </h2>
       <%= form_for([@checklist, @checklist.items.build]) do |f|%>
-        <div class="col-lg-5 form-group" style="padding:0px">
+        <div class="col-lg-3 form-group" style="padding:0px">
           <%= f.text_field :content, :class => 'form-control edit', :placeholder => 'Enter prereq' %>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" style="margin-left:35px">
         <%= f.hidden_field(:category, :value => "prereq") %>
         <%= f.submit("Add Prereq", :class => 'btn btn-default') %>
         </div>
@@ -60,10 +60,10 @@
     <div class="col-lg-12">
       <h2> ToDo's </h2>
       <%= form_for([@checklist, @checklist.items.build]) do |f|%>
-        <div class="col-lg-5 form-group" style="padding:0px">
+        <div class="col-lg-3 form-group" style="padding:0px">
           <%= f.text_field :content, :class => 'form-control edit', :placeholder => 'Enter todo' %>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" style="margin-left:35px">
         <%= f.hidden_field(:category, :value => "todo") %>
         <%= f.submit("Add Todo", :class => 'btn btn-default') %>
         </div>
